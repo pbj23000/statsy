@@ -3,7 +3,7 @@ package cj.mf;
 import cj.mf.statsylib.Stats;
 import cj.mf.statsylib.impl.*;
 
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Hello world!
@@ -13,11 +13,20 @@ public class App {
 
     public static void main(String[] args) {
 
+        double[] inputArray = populateArray((long) 5);
+        File dataFile = new File("data.dat");
+        DataInputStream inputStream = null;
+        try {
+            inputStream = populateDataInputStream(dataFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         Stats aggregateStats = new AggregateStatsImpl();
-        Stats descriptiveStats = new DescriptiveStatsImpl();
-        Stats statUtilsStats = new StatUtilsStatsImpl();
-        Stats summaryStats = new SummaryStatsImpl();
-        Stats threadSafeStats = new ThreadSafeStatsImpl();
+        Stats descriptiveStats = new DescriptiveStatsImpl(inputArray, inputStream);
+        Stats statUtilsStats = new StatUtilsStatsImpl(inputArray);
+        Stats summaryStats = new SummaryStatsImpl(inputStream);
+        Stats threadSafeStats = new ThreadSafeStatsImpl(inputArray);
 
         try {
 
@@ -43,5 +52,18 @@ public class App {
         }
 
         System.out.println("Hello World!");
+    }
+
+    private static double[] populateArray(long n) {
+        double[] toReturn = new double[(int) n];
+        for (int i = 0; i < n; i++) {
+            toReturn[i] = (double) i;
+        }
+        return toReturn;
+    }
+
+    private static DataInputStream populateDataInputStream(File f) throws FileNotFoundException {
+        DataInputStream toReturn = new DataInputStream(new FileInputStream(f));
+        return toReturn;
     }
 }

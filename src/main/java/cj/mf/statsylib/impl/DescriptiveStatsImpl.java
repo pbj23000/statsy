@@ -16,8 +16,9 @@ public class DescriptiveStatsImpl implements Stats {
 
     /**
      * Default constructor
+     * DO NOT USE
      */
-    public DescriptiveStatsImpl() {
+    private DescriptiveStatsImpl() {
     }
 
     /**

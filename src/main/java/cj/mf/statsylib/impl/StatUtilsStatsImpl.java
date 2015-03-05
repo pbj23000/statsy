@@ -13,8 +13,9 @@ public class StatUtilsStatsImpl implements Stats {
 
     /**
      * Default constructor
+     * DO NOT USE
      */
-    public StatUtilsStatsImpl() {
+    private StatUtilsStatsImpl() {
     }
 
     /**

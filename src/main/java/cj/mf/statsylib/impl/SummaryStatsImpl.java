@@ -16,8 +16,9 @@ public class SummaryStatsImpl implements Stats {
 
     /**
      * Default constructor
+     * DO NOT USE
      */
-    public SummaryStatsImpl() {
+    private SummaryStatsImpl() {
     }
 
     /**

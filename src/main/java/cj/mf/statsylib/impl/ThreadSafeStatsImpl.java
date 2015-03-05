@@ -14,7 +14,7 @@ public class ThreadSafeStatsImpl implements Stats {
     /**
      * Constructor that accepts parameters
      *
-     * @param inputArray
+     * @param inputArray the inputArray
      */
     public ThreadSafeStatsImpl(double[] inputArray) {
 
@@ -24,7 +24,7 @@ public class ThreadSafeStatsImpl implements Stats {
     /**
      * Default constructor
      */
-    public ThreadSafeStatsImpl() {
+    private ThreadSafeStatsImpl() {
 
     }
 
