@@ -15,7 +15,23 @@ public class SummaryStatsImpl implements Stats {
     private Double line;
 
     /**
+     * Default constructor
+     */
+    public SummaryStatsImpl() {
+    }
+
+    /**
+     * Constructor supporting parameters
+     *
+     * @param in
+     */
+    public SummaryStatsImpl(DataInputStream in) {
+        this.in = in;
+    }
+
+    /**
      * Gets the inputStream
+     *
      * @return the inputStream
      */
     public DataInputStream getIn() {
@@ -25,23 +41,10 @@ public class SummaryStatsImpl implements Stats {
 
     /**
      * Sets the inputStream
+     *
      * @param in the inputStream
      */
     public void setIn(DataInputStream in) {
-        this.in = in;
-    }
-
-    /**
-     * Default constructor
-     */
-    public SummaryStatsImpl() {
-    }
-
-    /**
-     * Constructor supporting parameters
-     * @param in
-     */
-    public SummaryStatsImpl(DataInputStream in) {
         this.in = in;
     }
 

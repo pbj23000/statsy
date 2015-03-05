@@ -7,25 +7,9 @@ import org.apache.commons.math3.util.FastMath;
 /**
  * Created by cjm on 3/4/15.
  */
-public class StatUtilsStatsImpl implements Stats{
+public class StatUtilsStatsImpl implements Stats {
 
     private double[] values;
-
-    /**
-     * Gets the values
-     * @return the values
-     */
-    public double[] getValues() {
-        return values;
-    }
-
-    /**
-     * Sets the values
-     * @param values the values
-     */
-    public void setValues(double[] values) {
-        this.values = values;
-    }
 
     /**
      * Default constructor
@@ -35,9 +19,28 @@ public class StatUtilsStatsImpl implements Stats{
 
     /**
      * Constructor supporting parameters
+     *
      * @param values the values
      */
     public StatUtilsStatsImpl(double[] values) {
+        this.values = values;
+    }
+
+    /**
+     * Gets the values
+     *
+     * @return the values
+     */
+    public double[] getValues() {
+        return values;
+    }
+
+    /**
+     * Sets the values
+     *
+     * @param values the values
+     */
+    public void setValues(double[] values) {
         this.values = values;
     }
 

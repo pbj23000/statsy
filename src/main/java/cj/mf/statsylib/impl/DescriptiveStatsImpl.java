@@ -5,7 +5,6 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.util.DoubleSummaryStatistics;
 
 /**
  * Created by cjm on 3/4/15.
@@ -14,6 +13,21 @@ public class DescriptiveStatsImpl implements Stats {
 
     private double[] inputArray;
     private DataInputStream in;
+
+    /**
+     * Default constructor
+     */
+    public DescriptiveStatsImpl() {
+    }
+
+    /**
+     * Constructor with parameters
+     *
+     * @param inputArray the inputArray
+     */
+    public DescriptiveStatsImpl(double[] inputArray) {
+        this.inputArray = inputArray;
+    }
 
     /**
      * gets the inputArray
@@ -35,6 +49,7 @@ public class DescriptiveStatsImpl implements Stats {
 
     /**
      * Gets the inputStream
+     *
      * @return the inputStream
      */
     public DataInputStream getIn() {
@@ -43,25 +58,11 @@ public class DescriptiveStatsImpl implements Stats {
 
     /**
      * Sets the inputStream
+     *
      * @param in the inputStream
      */
     public void setIn(DataInputStream in) {
         this.in = in;
-    }
-
-    /**
-     * Default constructor
-     */
-    public DescriptiveStatsImpl() {
-    }
-
-    /**
-     * Constructor with parameters
-     *
-     * @param inputArray the inputArray
-     */
-    public DescriptiveStatsImpl(double[] inputArray) {
-        this.inputArray = inputArray;
     }
 
     /**
