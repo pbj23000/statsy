@@ -12,7 +12,25 @@ public class ThreadSafeStatsImpl implements Stats {
     private double[] inputArray;
 
     /**
+     * Constructor that accepts parameters
+     *
+     * @param inputArray
+     */
+    public ThreadSafeStatsImpl(double[] inputArray) {
+
+        this.inputArray = inputArray;
+    }
+
+    /**
+     * Default constructor
+     */
+    public ThreadSafeStatsImpl() {
+
+    }
+
+    /**
      * Gets the inputArray
+     *
      * @return the inputArray
      */
     public double[] getInputArray() {
@@ -26,22 +44,6 @@ public class ThreadSafeStatsImpl implements Stats {
      */
     public void setInputArray(double[] inputArray) {
         this.inputArray = inputArray;
-    }
-
-    /**
-     * Constructor that accepts parameters
-     * @param inputArray
-     */
-    public ThreadSafeStatsImpl(double[] inputArray) {
-
-        this.inputArray = inputArray;
-    }
-
-    /**
-     * Default constructor
-     */
-    public ThreadSafeStatsImpl() {
-
     }
 
     //todo: implement this as the other DescriptiveStatistics class inside threads

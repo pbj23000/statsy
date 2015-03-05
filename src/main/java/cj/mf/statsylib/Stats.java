@@ -9,6 +9,7 @@ public interface Stats {
 
     /**
      * This method does stats.
+     *
      * @throws IOException when the inputStream fails
      */
     public void doStats() throws IOException;

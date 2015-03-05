@@ -11,7 +11,6 @@ import java.io.IOException;
 public class App {
 
 
-
     public static void main(String[] args) {
 
         Stats aggregateStats = new AggregateStatsImpl();
