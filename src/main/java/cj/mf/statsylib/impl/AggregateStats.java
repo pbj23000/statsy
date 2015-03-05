@@ -41,7 +41,7 @@ public class AggregateStats implements Stats {
         setTwoStats.addValue(4);
         //...
         // Aggregate the subsample statistics
-        Collection<SummaryStatistics> aggregate = new ArrayList<SummaryStatistics>();
+        Collection<SummaryStatistics> aggregate = new ArrayList<>();
         aggregate.add(setOneStats);
         aggregate.add(setTwoStats);
         StatisticalSummary aggregatedStats = AggregateSummaryStatistics.aggregate(aggregate);

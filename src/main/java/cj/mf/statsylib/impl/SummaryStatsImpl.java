@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class SummaryStatsImpl implements Stats {
 
-    private DataInputStream in;
+    private DataInputStream inputStream;
     private Double line;
 
     /**
@@ -23,10 +23,10 @@ public class SummaryStatsImpl implements Stats {
     /**
      * Constructor supporting parameters
      *
-     * @param in
+     * @param inputStream the inputStream
      */
-    public SummaryStatsImpl(DataInputStream in) {
-        this.in = in;
+    public SummaryStatsImpl(DataInputStream inputStream) {
+        this.inputStream = inputStream;
     }
 
     /**
@@ -34,39 +34,35 @@ public class SummaryStatsImpl implements Stats {
      *
      * @return the inputStream
      */
-    public DataInputStream getIn() {
+    public DataInputStream getInputStream() {
 
-        return in;
+        return inputStream;
     }
 
     /**
      * Sets the inputStream
      *
-     * @param in the inputStream
+     * @param inputStream the inputStream
      */
-    public void setIn(DataInputStream in) {
-        this.in = in;
+    public void setInputStream(DataInputStream inputStream) {
+        this.inputStream = inputStream;
     }
 
     /**
      * SummaryStatistics implementation of doStats
      */
     @Override
-    public void doStats() {
+    public void doStats() throws IOException {
         // Get a SummaryStatistics instance
         SummaryStatistics stats = new SummaryStatistics();
 
-        try {
-            // Read data from an input stream,
-            // adding values and updating sums, counters, etc.
-            while (line != null) {
-                line = in.readDouble();
-                stats.addValue(line);
-            }
-            in.close();
-        } catch (IOException e) {
-            System.out.print(e);
+        // Read data from an input stream,
+        // adding values and updating sums, counters, etc.
+        while (line != null) {
+            line = inputStream.readDouble();
+            stats.addValue(line);
         }
+        inputStream.close();
 
         // Compute the statistics
         double mean = stats.getMean();

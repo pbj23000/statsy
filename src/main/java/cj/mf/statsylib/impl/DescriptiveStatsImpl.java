@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DescriptiveStatsImpl implements Stats {
 
     private double[] inputArray;
-    private DataInputStream in;
+    private DataInputStream inputStream;
 
     /**
      * Default constructor
@@ -21,12 +21,14 @@ public class DescriptiveStatsImpl implements Stats {
     }
 
     /**
-     * Constructor with parameters
+     * Constructor accepting parameters
      *
-     * @param inputArray the inputArray
+     * @param inputArray  the inputArray
+     * @param inputStream the inputStream
      */
-    public DescriptiveStatsImpl(double[] inputArray) {
+    public DescriptiveStatsImpl(double[] inputArray, DataInputStream inputStream) {
         this.inputArray = inputArray;
+        this.inputStream = inputStream;
     }
 
     /**
@@ -52,17 +54,17 @@ public class DescriptiveStatsImpl implements Stats {
      *
      * @return the inputStream
      */
-    public DataInputStream getIn() {
-        return in;
+    public DataInputStream getInputStream() {
+        return inputStream;
     }
 
     /**
      * Sets the inputStream
      *
-     * @param in the inputStream
+     * @param inputStream the inputStream
      */
-    public void setIn(DataInputStream in) {
-        this.in = in;
+    public void setInputStream(DataInputStream inputStream) {
+        this.inputStream = inputStream;
     }
 
     /**
@@ -74,8 +76,8 @@ public class DescriptiveStatsImpl implements Stats {
         DescriptiveStatistics stats = new DescriptiveStatistics();
 
         // Add the data from the array
-        for (int i = 0; i < inputArray.length; i++) {
-            stats.addValue(inputArray[i]);
+        for (double anInputArray : inputArray) {
+            stats.addValue(anInputArray);
         }
 
         // Compute some statistics
@@ -87,29 +89,26 @@ public class DescriptiveStatsImpl implements Stats {
 
     /**
      * Compute a rolling mean over the last 100 values seen
+     * @throws IOException when the inputStream fails
      */
-    public void rollingMean() {
-        Double line = new Double(0);
+    public void rollingMean() throws IOException {
+        Double line = (double) 0;
         // Create a DescriptiveStats instance and set the window size to 100
         DescriptiveStatistics stats = new DescriptiveStatistics();
         stats.setWindowSize(100);
 
-        try {
-            // Read data from an input stream,
-            // displaying the mean of the most recent 100 observations
-            // after every 100 observations
-            long nLines = 0;
-            while (line != null) {
-                line = in.readDouble();
-                stats.addValue(line);
-                if (nLines == 100) {
-                    nLines = 0;
-                    System.out.println(stats.getMean());
-                }
+        // Read data from an input stream,
+        // displaying the mean of the most recent 100 observations
+        // after every 100 observations
+        long nLines = 0;
+        while (line != null) {
+            line = inputStream.readDouble();
+            stats.addValue(line);
+            if (nLines == 100) {
+                nLines = 0;
+                System.out.println(stats.getMean());
             }
-            in.close();
-        } catch (IOException e) {
-            System.out.print(e);
+            inputStream.close();
         }
     }
 }
