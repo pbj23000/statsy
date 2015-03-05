@@ -11,8 +11,11 @@ import java.util.Collection;
 /**
  * Created by cjm on 3/4/15.
  */
-public class AggregateStats implements Stats {
+public class AggregateStatsImpl implements Stats {
 
+    /**
+     * AggregateStats implementation of doStats()
+     */
     @Override
     public void doStats() {
         // Create a AggregateSummaryStatistics instance to accumulate the overall statistics
@@ -30,6 +33,9 @@ public class AggregateStats implements Stats {
         double totalSampleSum = aggregate.getSum();
     }
 
+    /**
+     * Does Multithreaded Stats
+     */
     public void doMultithreadedStats() {
         // Create SummaryStatistics instances for the subsample data
         SummaryStatistics setOneStats = new SummaryStatistics();

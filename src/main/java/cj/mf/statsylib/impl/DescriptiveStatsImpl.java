@@ -89,9 +89,10 @@ public class DescriptiveStatsImpl implements Stats {
 
     /**
      * Compute a rolling mean over the last 100 values seen
+     *
      * @throws IOException when the inputStream fails
      */
-    public void rollingMean() throws IOException {
+    public void doRollingMean() throws IOException {
         Double line = (double) 0;
         // Create a DescriptiveStats instance and set the window size to 100
         DescriptiveStatistics stats = new DescriptiveStatistics();
@@ -108,7 +109,8 @@ public class DescriptiveStatsImpl implements Stats {
                 nLines = 0;
                 System.out.println(stats.getMean());
             }
-            inputStream.close();
+            nLines++;
         }
+        inputStream.close();
     }
 }
