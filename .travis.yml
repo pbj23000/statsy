@@ -1,4 +1,13 @@
 language: java
+install: true
+matrix:
+  include:
+  - jdk: oraclejdk8
+before_deploy:
+  - git config --global user.email "builds@travis-ci.com"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
+  - git tag $GIT_TAG -a -m "Generated tag from Travis CI for build $TRAVIS_BUILD_NUMBER"
+  - git push -q https://$TAGPERM@github.com/pbj23000/statsy --tags
+  - ls -R
 
-jdk:
- - oraclejdk8
