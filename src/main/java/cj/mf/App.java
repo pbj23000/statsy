@@ -14,7 +14,8 @@ public class App {
     public static void main(String[] args) {
 
         double[] inputArray = populateArray((long) 5);
-        File dataFile = new File("data.dat");
+        File dataFile = new File(
+                App.class.getClassLoader().getResource("data.dat").getFile());
         DataInputStream inputStream = null;
         try {
             inputStream = populateDataInputStream(dataFile);
