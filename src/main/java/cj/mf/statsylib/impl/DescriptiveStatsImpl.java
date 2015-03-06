@@ -69,10 +69,16 @@ public class DescriptiveStatsImpl implements Stats {
     }
 
     /**
-     * DescriptiveStatistics implementation of doStats
+     * Runs both the DescriptiveStatistics and RollingMean implementation of doStats
      */
     @Override
-    public void doStats() {
+    public void doStats() throws IOException {
+
+        doDescriptiveStats();
+        doRollingMean();
+    }
+
+    private void doDescriptiveStats() {
         // Get a DescriptiveStatistics instance
         DescriptiveStatistics stats = new DescriptiveStatistics();
 

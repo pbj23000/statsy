@@ -54,6 +54,10 @@ public class SummaryStatsImpl implements Stats {
      */
     @Override
     public void doStats() throws IOException {
+        doSummaryStats();
+    }
+
+    private void doSummaryStats() throws IOException {
         // Get a SummaryStatistics instance
         SummaryStatistics stats = new SummaryStatistics();
 

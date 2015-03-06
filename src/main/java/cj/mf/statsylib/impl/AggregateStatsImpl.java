@@ -14,10 +14,16 @@ import java.util.Collection;
 public class AggregateStatsImpl implements Stats {
 
     /**
-     * AggregateStats implementation of doStats()
+     * Runs both the AggregateStats and MultithreadedStats implementation of doStats()
      */
     @Override
     public void doStats() {
+
+        doAggregateStats();
+        doMultithreadedStats();
+    }
+
+    private void doAggregateStats() {
         // Create a AggregateSummaryStatistics instance to accumulate the overall statistics
         // and AggregatingSummaryStatistics for the subsamples
         AggregateSummaryStatistics aggregate = new AggregateSummaryStatistics();
@@ -36,7 +42,7 @@ public class AggregateStatsImpl implements Stats {
     /**
      * Does Multithreaded Stats
      */
-    public void doMultithreadedStats() {
+    private void doMultithreadedStats() {
         // Create SummaryStatistics instances for the subsample data
         SummaryStatistics setOneStats = new SummaryStatistics();
         SummaryStatistics setTwoStats = new SummaryStatistics();

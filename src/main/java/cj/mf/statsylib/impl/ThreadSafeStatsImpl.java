@@ -49,6 +49,10 @@ public class ThreadSafeStatsImpl implements Stats {
     //todo: implement this as the other DescriptiveStatistics class inside threads
     @Override
     public void doStats() {
+        doDescriptiveStats();
+    }
+
+    private void doDescriptiveStats() {
         // Create a SynchronizedDescriptiveStatistics instance and
         // use as any other DescriptiveStatistics instance
         DescriptiveStatistics stats = new SynchronizedDescriptiveStatistics();

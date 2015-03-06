@@ -50,6 +50,10 @@ public class StatUtilsStatsImpl implements Stats {
      */
     @Override
     public void doStats() {
+        doStatUtilsStats();
+    }
+
+    private void doStatUtilsStats() {
         // Compute statistics directly from the array
         // assume values is a double[] array
         double mean = StatUtils.mean(values);
